@@ -14,7 +14,7 @@ let { exp, limit, level, role } = global.db.data.users[m.sender]
     let { min, xp, max } = levelling.xpRange(level, global.multiplier)
 let name = conn.getName(m.sender)
 let ppq = await fetch('https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png?q=60')
-ppq = await conn.getProfilePicture(m.sender)
+ppq = await this.getProfilePictureUrl(m.sender)
 //let pp = await ppq.download()
 //let url = await uploadImage(ppq)
 try {
