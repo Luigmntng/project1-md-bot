@@ -16,12 +16,13 @@ async function handler(m, { conn, usedPrefix, command, text }) {
         let lmao = item(user.sword * 1, user.armor * 1, user.healt * 1, usedPrefix)
         if (buttons.length == 0) return m.reply(lmao)   
         const buttonMessage = {
-            contentText: lmao,
-            footerText: 'Cuman ngerecode',
+            text: lmao,
+            footer: 'Cuman ngerecode',
             buttons: buttons,
-            headerType: 1
+            headerType: 1,
+            mentions: conn.parseMention(footer+content)
         }
-        return conn.sendMessage(m.chat, buttonMessage, MessageType.buttonsMessage, { quoted: m }) // nak durung menuhi syarat
+        return await conn.sendMessage(m.chat, buttonMessage, { quoted: m }) // nak durung menuhi syarat
     }
     global.dungeon = global.dungeon ? global.dungeon : {}
     if (Object.values(global.dungeon).find(room => room.id.startsWith('dungeon') && [room.game.player1, room.game.player2, room.game.player3, room.game.player4].includes(m.sender))) return m.reply('Kamu masih di dalam Dungeon') // nek iseh neng njero dungeon
@@ -58,12 +59,13 @@ async function handler(m, { conn, usedPrefix, command, text }) {
         
         let lmao = `${!room.game.player4 ? `Menunggu ${!room.game.player3 && !room.game.player4 ? '2' : '1'} Partner lagi... ${room.name ? `mengetik command dibawah ini *${usedPrefix}${command} ${room.name}*` : ''}` : 'Semua partner telah lengkap...'}`
         const buttonMessage = {
-            contentText: lmao,
-            footerText: 'Cuman ngerecode',
+            txt: lmao,
+            footer: 'Cuman ngerecode',
             buttons: buttons,
             headerType: 1
+            mentions:conn.parseMention(footer+content)
         }
-        conn.sendMessage(m.chat, buttonMessage, MessageType.buttonsMessage)
+        return await conn.sendMessage(m.chat, buttonMessage, { quoted: m})
         
         if (room.game.player1 && room.game.player2 && room.game.player3 && room.game.player4) {
 
@@ -327,12 +329,13 @@ Sedang berperang di dungeon...
         let lmao = 'Menunggu partner ' + (text ? `mengetik command dibawah ini
 ${usedPrefix}${command} ${text}` : '') + '\natau ketik *sendiri* untuk bermain sendiri'
         const buttonMessage = {
-            contentText: lmao,
-            footerText: 'Cuman ngerecode',
+            text: lmao,
+            footer: 'Cuman ngerecode',
             buttons: buttons,
             headerType: 1
+            mentions: conn.parseMention(footer+content)
         }
-        conn.sendMessage(m.chat, buttonMessage, MessageType.buttonsMessage, { quoted: m })
+       return await conn.sendMessage(m.chat, buttonMessage, { quoted: m })
         global.dungeon[room.id] = room
       }
 }
@@ -363,10 +366,11 @@ handler.before = function (m) {
         
         let lmao = 'Kamu tidak bisa bermain sendiri karena memiliki partner. Silahkan ketik *gass* untuk bermain dengan partner lainnya...'
         const buttonMessage = {
-          contentText: lmao,
-          footerText: 'Cuman ngerecode',
+          text: lmao,
+          footer: 'Cuman ngerecode',
           buttons: buttons,
           headerType: 1
+          mentions: conn.parseMention(footer+content)
       }
   
       if (room.player2 || room.player3 || room.player4) return this.sendMessage(m.chat, buttonMessage, MessageType.buttonsMessage)
@@ -657,7 +661,7 @@ Sedang berperang di dungeon...
   return 
 }
 
-handler.help = ['dungeon'].map(v => v + ' [custom room name]')
+handler.help = ['dungeon'].map(v => v + ' [custom room name] [BETA]')
 handler.tags = ['rpg']
 handler.command = /^(dungeon)$/i
 
