@@ -58,7 +58,7 @@ try {
     }
   }
   
-handler.help = ['use <item> <jumlah>', 'heal']
+handler.help = ['eat <item> <jumlah>', 'makan']
 handler.tags = ['rpg']
 handler.command = /^(makan|eat)$/i
 handler.register = true
