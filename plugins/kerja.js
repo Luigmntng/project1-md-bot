@@ -107,7 +107,7 @@ global.db.data.users[m.sender].lastkerja = new Date * 1
 	m.reply(`Kamu baru saja selesai ${rumah} 🔨\nDan mendapatkan uang senilai *Rp ${duitk} 💹*`)
 break
 default:
-                        return conn.sendButton( m.chat, kerjam, `${wm}`,`Back`,'.menu')
+                        return conn.sendBut( m.chat, kerjam, wm,'Back','.menu', m)
                 }
                 }
                 
@@ -117,7 +117,7 @@ handler.help = ['kerja','work']
 handler.tags = ['rpg']
 handler.command = /^kerja$/i 
 
-let wm = global.botwm
+let wm = global.wm
 
 module.exports = handler
 //JANGAN DIUBAH YA YG DIBAWAH
