@@ -10,6 +10,6 @@ conn.sendBut( m.chat, caption, `Salam`, 'Waalaikummussalam','warahmatullahi waba
 
        }
        
-handler.customPrefix = /^(assalamualaikum|Salom|salam)/i
+handler.customPrefix = /^(assalamualaikum|Assalamualaikum|Ass|ass|Salom|salam)/i
 handler.command = new RegExp
 module.exports = handler
