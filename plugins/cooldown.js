@@ -105,7 +105,7 @@ let handler = async (m, { conn, usedPrefix }) => {
 ⚠️ *Warn:* ${warn}
 ⛔ *Banned:* No
 `.trim()
-    conn.send2Button(m.chat, str,`${botol}`, `Inventory`, `.inv`, `Profile`, `.profile`, m)
+    conn.send2But(m.chat, str,`${botol}`, `Inventory`, `.inv`, `Profile`, `.profile`, m)
     conn.reply(str)
 }
 handler.help = ['cd','cooldown']
@@ -117,4 +117,4 @@ module.exports = handler
 const more = String.fromCharCode(8206)
 const readMore = more.repeat(4201)
 
-let botol = global.botwm
+let botol = global.wm
