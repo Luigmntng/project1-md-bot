@@ -80,7 +80,7 @@ Burning fire +
             break
 
           default:
-            return conn.sendButton( m.chat, caption, wm, `⋮☰ BACK`, `.menu`, m)
+            return await conn.sendBut( m.chat, caption, wm, `⋮☰ BACK`, `.menu`, m)
         }
     } else if (/enchant|enchan/i.test(command)) {
       const count = args[2] && args[2].length > 0 ? Math.min(99999999, Math.max(parseInt(args[2]), 1)) : !args[2] || args.length < 4 ? 1 :Math.min(1, count)
@@ -94,7 +94,7 @@ Burning fire +
           break
 
         default:
-          return conn.sendbutton( m.chat, caption, wm, `⋮☰ BACK`, `.menu`, m)
+          return await conn.sendBut( m.chat, caption, wm, `⋮☰ BACK`, `.menu`, m)
       }
     }
   } catch (err) {
