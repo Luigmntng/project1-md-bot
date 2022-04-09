@@ -1,9 +1,10 @@
 let fetch = require('node-fetch')
+let fs = require('fs')
 let handler = async (m, { conn, command, usedPrefix }) => {
 
-let res = await fetch('https://telegra.ph/file/97e5e587a1d27b7b96701.jpg')
+let info = './media/PicsArt_03-30-04.11.24.jpg'
 		
-	conn.sendButtonImg(m.chat, res, '', wm, 'Iyah bg saya khilaf', `tch`, m)
+	conn.sendButtonImg(m.chat, info, `Join neraka deck? `, `wm`, 'Iyah bg saya khilaf', `tch`, m)
 
 }
 
