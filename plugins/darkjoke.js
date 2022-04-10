@@ -1,8 +1,40 @@
-let handler = async (m, { conn }) => {
-    conn.sendButtonImg(m.chat, global.API('lolhuman', '/api/meme/darkjoke', {}, 'apikey'), 'Dark Jokes', wm, 'NEXT', '.darkjokes', m)
-}
-handler.help = ['darkjokes']
-handler.tags = ['internet']
-handler.command = /^(dragjokes|darkjokes)$/i
+async function getRandom(url) {
+    return Math.floor(Math.random() * url)
+    }
+    
+     let handler  = async (m, { conn }) => {
+    
+          conn.sendFile(m.chat, `https://leyscoders-api.herokuapp.com/api/darkjoke?apikey=dappakntlll`, '', `Dark?`, m)
+    
+    }
+    
+    handler.help = ['Darkjokes']
+    
+    handler.tags = ['internet']
+    
+    handler.command = /^(darkjokes)$/i
+    
+    handler.owner = false
+    
+    handler.mods = false
+    
+    handler.premium = false
+    
+    handler.group = false
+    
+    handler.private = false
+    
+    handler.limit = true
 
-module.exports = handler
+    
+    handler.admin = false
+    
+    handler.botAdmin = false
+    
+    
+    
+    handler.fail = null
+    
+    
+    
+    module.exports = handler
